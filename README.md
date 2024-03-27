@@ -12,7 +12,7 @@
 mkdir -p ~/clobot_ws/src/etri_inteli_robot
 
 # git clone
-https://github.com/aai4r/{}.git
+https://github.com/aai4r/homebot_server.git
 
 # docker build : edge_sub
 # -t : image tag name
