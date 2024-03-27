@@ -1,0 +1,4 @@
+gmqtt==0.6.9
+numpy==1.20.3
+opencv-python==4.5.2.52
+uvloop==0.15.2
