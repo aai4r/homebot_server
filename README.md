@@ -1,13 +1,9 @@
 
 # ETRI 지능형 로봇 개발
 
----
-
 - 홈봇과 Docker container (ROS2) 간의 메시지 중계 역할을 담당 합니다.
 
 ## ```준비물```
-
----
 
 - Docker 설치 (https://docs.docker.com/engine/install/ubuntu)
 
