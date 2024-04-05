@@ -47,7 +47,7 @@ ROS_TOPIC_EDGE_MOTION_PAN = "/server_manager/motion_pan"
 
 EDGE_SERVER_SUB_ID = "robot_mode"
 EDGE_SERVER_PUB_ID = "edge_publisher"
-ETRI_MQTT_SERVER_URL = "172.29.0.2"
+ETRI_MQTT_SERVER_URL = "172.39.0.2"
 ETRI_MQTT_SERVER_PORT = 1883
 ETRI_MQTT_CONN_ID = "clobot"
 ETRI_MQTT_CONN_PASSWORD = "ansdufdj1*"
