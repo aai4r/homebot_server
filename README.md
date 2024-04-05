@@ -100,3 +100,51 @@ docker run -d --name edge_sub --restart=always --net homebot_virtual_bridge --ip
 # docker run : edge_pub
 docker run -d --name edge_pub --restart=always --net homebot_virtual_bridge --ip 172.39.0.5 edge_pub
 ```
+
+### 메시지 확인
+- SERVER to ROBOT
+    - speech
+    - expression
+    - motion
+
+```bash
+# PC host와 container
+xhost+
+docker run --net homebot_virtual_bridge -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it aai4r/dummybot bash
+
+# ROS2 환경변수 등록
+source /opt/ros/foxy/setup.bash
+# Custom msg (RobotImageInfo) 환경변수 등록
+source install/setup.bash
+
+ros2 topic list
+
+/camera/robot_image_info
+/server_manager/expression
+/server_manager/motion_pan
+/server_manager/motion_tilt
+/server_manager/speech
+/stt/result
+
+ros2 topic pub -1 /server_manager/speech std_msgs/String "data: hello"
+ros2 topic pub -1 /server_manager/expression std_msgs/String "data: FACE_WAKE_UP"
+ros2 topic pub -1 /server_manager/motion_pan std_msgs/String "data: {direction: 'pan', degree: '10'}"
+ros2 topic pub -1 /server_manager/motion_tilt std_msgs/String "data: {direction: 'tilt', degree: '10'}"
+```
+
+- ROBOT to SERVER
+    - send image
+    - stt result
+
+```bash
+xhost+
+docker run --net homebot_virtual_bridge -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it aai4r/dummybot bash
+
+# ROS2 환경변수 등록
+source /opt/ros/foxy/setup.bash
+# Custom msg (RobotImageInfo) 환경변수 등록
+source install/setup.bash
+
+ros2 topic echo /camera/robot_image_info
+ros2 topic echo /stt/result 
+```
